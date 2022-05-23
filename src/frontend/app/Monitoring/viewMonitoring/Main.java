@@ -1,23 +1,22 @@
-package frontend.app.newMain;
-
+package frontend.app.Monitoring.viewMonitoring;
 import frontend.app.model.AppModel;
 import frontend.app.view.application.GUIController;
 import frontend.app.viewModel.AppViewModel;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
+import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 
-public class Main2 extends Application {
+public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
             FXMLLoader fxl = new FXMLLoader();
             BorderPane root = fxl.load(getClass().getResource("Sample.fxml").openStream());
             AppModel m = new AppModel();
-            AppViewModel vm = new AppViewModel(m);
-            GUIController view = fxl.getController();
+            AppViewModelMonitoring vm = new AppViewModelMonitoring(m);
+            GUIControllerMonitoring view = fxl.getController();
             view.init(vm);
 
             Scene scene = new Scene(root, 1400, 680);

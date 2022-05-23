@@ -1,6 +1,5 @@
-package frontend.app.view.application;
+package frontend.app.Monitoring.viewMonitoring;
 
-import frontend.app.Monitoring.viewMonitoring.AppViewModelMonitoring;
 import frontend.app.model.algorithms.HybridAlgo;
 import frontend.app.model.algorithms.LinearRegression;
 import frontend.app.model.algorithms.ZScore;
@@ -9,7 +8,6 @@ import frontend.app.view.featureListView.FeatureList;
 import frontend.app.view.graphView.Graph;
 import frontend.app.view.joystickView.Joystick;
 import frontend.app.view.menuBarView.MenuBar;
-import frontend.app.view.timeLineView.TimeLine;
 import frontend.app.viewModel.AppViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.chart.XYChart;
@@ -17,9 +15,9 @@ import javafx.scene.chart.XYChart;
 import java.util.HashMap;
 
 
-public class GUIController {
+public class GUIControllerMonitoring {
 
-    private AppViewModel vm;
+    private AppViewModelMonitoring vm;
     @FXML
     private FeatureList featureList;
     @FXML
@@ -31,7 +29,7 @@ public class GUIController {
     @FXML
     private MenuBar menuBar;
     @FXML
-    private TimeLine timeLine;
+   // private TimeLine timeLine;
 
     private HashMap<String, XYChart.Series<Number, Number>> seriesHashMap;
     private HashMap<String, XYChart.Series<Number, Number>> seriesHashMapB;
@@ -47,10 +45,10 @@ public class GUIController {
     private XYChart.Series seriesPointAnomaly;
     private XYChart.Series seriesTimeAnomaly;
 
-    public GUIController() {
+    public GUIControllerMonitoring() {
     }
 
-    public void init(AppViewModel vm) {
+    public void init(AppViewModelMonitoring vm) {
         this.vm = vm;
         BindJoyStickProperties();
         bindDashboardProperties();
@@ -105,7 +103,7 @@ public class GUIController {
 
 
     private void addLis() {
-        timeLine.timeStampProperty().addListener(
+        /*timeLine.timeStampProperty().addListener(
                 v -> {
                     if (!vm.getNameofFeatureA().getValue().equals("")) {
                         vm.getAppModel().addValueAtTime(vm.getNameofFeatureA().getValue(), seriesPointA);
@@ -140,7 +138,7 @@ public class GUIController {
                     }
 
 
-                });
+                });*/
         vm.getNameofFeatureA().addListener(v -> {
             boolean lock = false;
             if (vm.isInflight()) {
@@ -341,11 +339,11 @@ public class GUIController {
 
     }
 
-    public AppViewModel getVm() {
+    public AppViewModelMonitoring getVm() {
         return vm;
     }
 
-    public void setVm(AppViewModel vm) {
+    public void setVm(AppViewModelMonitoring vm) {
         this.vm = vm;
     }
 
@@ -388,7 +386,7 @@ public class GUIController {
     public void setMenuBar(MenuBar menuBar) {
         this.menuBar = menuBar;
     }
-
+/*
     public TimeLine getTimeLine() {
         return timeLine;
     }
@@ -397,5 +395,5 @@ public class GUIController {
         this.timeLine = timeLine;
     }
 
-
+*/
 }
